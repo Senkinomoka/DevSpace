@@ -112,3 +112,14 @@ textarea::-webkit-scrollbar-thumb {
   background: blanchedalmond;
   border-radius: 10px;
 }
+input {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.08);
+  color: blanchedalmond;
+  font-family: 'Playfair Display', serif;
+  outline: none;
+}
