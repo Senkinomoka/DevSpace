@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Georgia', serif;
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  background-image: url("Images/Poema.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.contenido {
+  position: relative;
+  text-align: center;
+  color: blanchedalmond;
+  width: 90%;
+  max-width: 600px;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(0,0,0,0.8);
+}
+
+/* Editor */
+textarea {
+  width: 100%;
+  height: 220px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 10px;
+  padding: 15px;
+  color: blanchedalmond;
+  font-size: 1rem;
+  font-family: 'Georgia', serif;
+  outline: none;
+  resize: none;
+  backdrop-filter: blur(6px);
+  transition: 0.3s;
+}
+
+textarea:focus {
+  border-color: blanchedalmond;
+  box-shadow: 0 0 15px rgba(255, 235, 205, 0.3);
+}
+
+/* Info */
+.info {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Botón */
+button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: blanchedalmond;
+  color: #111;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
