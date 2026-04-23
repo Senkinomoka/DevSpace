@@ -23,9 +23,10 @@ async function guardarPoema() {
   item.classList.add("post");
 
   item.innerHTML = `
-    <h3 contenteditable="true">${data.titulo}</h3>
-    <p contenteditable="true">${data.contenido}</p>
-    <small>${data.fecha}</small>
+  <h3>${p.titulo}</h3>
+  <p>${p.contenido}</p>
+  <small>${p.fecha}</small>
+`;
     
     <br>
     <button onclick="editar('${docu.id}', this)">Guardar cambios</button>
