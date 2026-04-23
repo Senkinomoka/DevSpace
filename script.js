@@ -104,3 +104,6 @@ async function cargarComentarios(postId) {
     }
   });
 }
+setTimeout(() => {
+  item.style.animationDelay = `${index * 0.05}s`;
+}, 0);
