@@ -170,3 +170,20 @@ input {
   margin-top: 10px;
   line-height: 1.5;
 }
+.post {
+  transition: 0.3s;
+}
+
+.post:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(255,235,205,0.2);
+}
+
+/* Editable efecto */
+[contenteditable="true"] {
+  outline: none;
+}
+
+[contenteditable="true"]:focus {
+  border-bottom: 1px solid blanchedalmond;
+}
