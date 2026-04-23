@@ -107,3 +107,9 @@ async function cargarComentarios(postId) {
 setTimeout(() => {
   item.style.animationDelay = `${index * 0.05}s`;
 }, 0);
+item.style.opacity = 0;
+
+setTimeout(() => {
+  item.style.transition = "0.4s";
+  item.style.opacity = 1;
+}, 50);
