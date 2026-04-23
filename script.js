@@ -69,3 +69,21 @@ function guardarPoema() {
 
   alert("Poema guardado ✅");
 }
+function mostrarPoemas() {
+  const lista = document.getElementById("lista");
+  const poemas = JSON.parse(localStorage.getItem("poemas")) || [];
+
+  lista.innerHTML = "";
+
+  poemas.forEach((p) => {
+    const item = document.createElement("div");
+    item.innerHTML = `
+      <h3>${p.titulo}</h3>
+      <p>${p.contenido}</p>
+      <small>${p.fecha}</small>
+      <hr>
+    `;
+    lista.appendChild(item);
+  });
+}
+mostrarPoemas();
