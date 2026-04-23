@@ -16,33 +16,34 @@ async function guardarPoema() {
   textarea.value = "";
   titulo.value = "";
 
-  mostrarPoemas();
-}
-
-/* MOSTRAR */
-async function mostrarPoemas() {
-  lista.innerHTML = "";
-
-  const querySnapshot = await getDocs(collection(db, "poemas"));
-
   querySnapshot.forEach((docu) => {
-    const data = docu.data();
+  const data = docu.data();
 
-    const item = document.createElement("div");
-    item.classList.add("post");
+  const item = document.createElement("div");
+  item.classList.add("post");
 
-    item.innerHTML = `
-      <h3 contenteditable="true">${data.titulo}</h3>
-      <p contenteditable="true">${data.contenido}</p>
-      <small>${data.fecha}</small>
-      <br>
-      <button onclick="editar('${docu.id}', this)">Guardar cambios</button>
-      <button onclick="eliminar('${docu.id}')">Eliminar</button>
-    `;
+  item.innerHTML = `
+    <h3 contenteditable="true">${data.titulo}</h3>
+    <p contenteditable="true">${data.contenido}</p>
+    <small>${data.fecha}</small>
+    
+    <br>
+    <button onclick="editar('${docu.id}', this)">Guardar cambios</button>
+    <button onclick="eliminar('${docu.id}')">Eliminar</button>
 
-    lista.appendChild(item);
-  });
-}
+    <div class="comentarios">
+      <h4>💬 Comentarios</h4>
+      <div id="comentarios-${docu.id}"></div>
+
+      <input type="text" placeholder="Escribe un comentario..." id="input-${docu.id}">
+      <button onclick="agregarComentario('${docu.id}')">Enviar</button>
+    </div>
+  `;
+
+  lista.appendChild(item);
+
+  cargarComentarios(docu.id);
+});
 
 /* ELIMINAR */
 async function eliminar(id) {
