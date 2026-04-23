@@ -66,3 +66,40 @@ async function editar(id, btn) {
 }
 
 mostrarPoemas();
+async function agregarComentario(postId) {
+  const input = document.getElementById(`input-${postId}`);
+  const texto = input.value;
+
+  if (!texto.trim()) return;
+
+  await addDoc(collection(db, "comentarios"), {
+    postId: postId,
+    texto: texto,
+    fecha: new Date().toLocaleString()
+  });
+
+  input.value = "";
+  cargarComentarios(postId);
+}
+async function cargarComentarios(postId) {
+  const contenedor = document.getElementById(`comentarios-${postId}`);
+  contenedor.innerHTML = "";
+
+  const querySnapshot = await getDocs(collection(db, "comentarios"));
+
+  querySnapshot.forEach((docu) => {
+    const data = docu.data();
+
+    if (data.postId === postId) {
+      const div = document.createElement("div");
+      div.classList.add("comentario");
+
+      div.innerHTML = `
+        <p>${data.texto}</p>
+        <small>${data.fecha}</small>
+      `;
+
+      contenedor.appendChild(div);
+    }
+  });
+}
