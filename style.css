@@ -187,3 +187,34 @@ input {
 [contenteditable="true"]:focus {
   border-bottom: 1px solid blanchedalmond;
 }
+.comentarios {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.comentario {
+  background: rgba(255,255,255,0.05);
+  padding: 8px;
+  border-radius: 6px;
+  margin-top: 5px;
+}
+
+.comentario p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.comentario small {
+  font-size: 0.7rem;
+  opacity: 0.6;
+}
+
+.comentarios input {
+  margin-top: 10px;
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+}
