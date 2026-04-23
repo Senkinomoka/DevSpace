@@ -123,3 +123,16 @@ input {
   font-family: 'Playfair Display', serif;
   outline: none;
 }
+#lista {
+  margin-top: 30px;
+  text-align: left;
+}
+
+#lista h3 {
+  color: blanchedalmond;
+}
+
+#lista p {
+  opacity: 0.8;
+  margin: 5px 0;
+}
