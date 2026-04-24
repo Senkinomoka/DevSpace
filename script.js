@@ -3,18 +3,18 @@ const contenido = document.getElementById("contenido");
 const categoria = document.getElementById("categoria");
 const lista = document.getElementById("lista");
 
-/* GUARDAR POST */
+/* VALIDACIÓN + GUARDADO */
 function guardarPost() {
-  if (!titulo.value || !contenido.value) {
-    alert("Completa los campos");
+  if (!titulo.value.trim() || !contenido.value.trim()) {
+    mostrarToast("Completa los campos");
     return;
   }
 
   const posts = JSON.parse(localStorage.getItem("posts")) || [];
 
   const nuevo = {
-    titulo: titulo.value,
-    contenido: contenido.value,
+    titulo: titulo.value.trim(),
+    contenido: contenido.value.trim(),
     categoria: categoria.value || "General",
     fecha: new Date().toLocaleString()
   };
@@ -22,29 +22,29 @@ function guardarPost() {
   posts.unshift(nuevo);
   localStorage.setItem("posts", JSON.stringify(posts));
 
+  limpiar();
+  render();
+  mostrarToast("Publicado correctamente");
+
+  scrollFeed();
+}
+
+/* LIMPIAR */
+function limpiar() {
   titulo.value = "";
   contenido.value = "";
   categoria.value = "";
-
-  mostrarPosts();
-  mostrarToast();
-
-  setTimeout(() => {
-    document.querySelector(".feed").scrollIntoView({
-      behavior: "smooth"
-    });
-  }, 100);
 }
 
-/* MOSTRAR POSTS */
-function mostrarPosts() {
+/* RENDER */
+function render() {
   const posts = JSON.parse(localStorage.getItem("posts")) || [];
 
   lista.innerHTML = "";
 
-  posts.forEach((p, index) => {
+  posts.forEach((p) => {
     const item = document.createElement("div");
-    item.classList.add("post");
+    item.className = "post";
 
     item.innerHTML = `
       <h3>${p.titulo}</h3>
@@ -54,20 +54,10 @@ function mostrarPosts() {
     `;
 
     lista.appendChild(item);
-
-    // animación tipo app
-    item.style.opacity = 0;
-    item.style.transform = "translateY(10px)";
-
-    setTimeout(() => {
-      item.style.transition = "0.4s";
-      item.style.opacity = 1;
-      item.style.transform = "translateY(0)";
-    }, index * 80);
   });
 }
 
-/* EVITAR HTML INYECTADO */
+/* SEGURIDAD */
 function escapeHTML(text) {
   return text
     .replace(/&/g, "&amp;")
@@ -75,9 +65,17 @@ function escapeHTML(text) {
     .replace(/>/g, "&gt;");
 }
 
+/* SCROLL */
+function scrollFeed() {
+  document.querySelector(".feed").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
 /* TOAST */
-function mostrarToast() {
+function mostrarToast(msg) {
   const toast = document.getElementById("toast");
+  toast.textContent = msg;
   toast.classList.add("show");
 
   setTimeout(() => {
@@ -85,5 +83,5 @@ function mostrarToast() {
   }, 2000);
 }
 
-/* INICIAR */
-mostrarPosts();
+/* INIT */
+render();
