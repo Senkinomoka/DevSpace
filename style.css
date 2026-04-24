@@ -1,79 +1,13 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono&display=swap');
 
-body {
-  font-family: 'Georgia', serif;
+:root {
+  --bg: #0f1115;
+  --card: #16181d;
+  --border: #23262d;
+  --text: #e6e6e6;
+  --subtext: #8b8f98;
+  --accent: #4f8cff;
 }
-
-.hero {
-  position: relative;
-  height: 100vh;
-  background-image: url("Poema.jpg?v=3");
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-}
-
-.contenido {
-  position: relative;
-  text-align: center;
-  color: blanchedalmond;
-  width: 90%;
-  max-width: 600px;
-}
-
-h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  text-shadow: 0 0 10px rgba(0,0,0,0.8);
-}
-
-/* Editor */
-textarea {
-  caret-color: blanchedalmond;
-  transition: 0.2s;
-}
-
-textarea:focus {
-  transform: scale(1.01);
-}
-
-/* Info */
-.info {
-  margin-top: 10px;
-  font-size: 0.9rem;
-  opacity: 0.8;
-}
-
-/* Botón */
-button {
-  margin-top: 15px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  background: blanchedalmond;
-  color: #111;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-button:hover {
-  transform: scale(1.05);
-}
-/* Fuente más elegante (Google Fonts) */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
 
 * {
   margin: 0;
@@ -83,157 +17,173 @@ button:hover {
 
 body {
   font-family: 'Inter', sans-serif;
-  background: radial-gradient(circle at top, #1a1a1d, #0f0f10);
-  color: #eaeaea;
+  background: var(--bg);
+  color: var(--text);
 }
 
 /* CONTENEDOR */
 .app {
-  max-width: 500px;
+  max-width: 780px;
   margin: auto;
-  padding: 20px;
+  padding: 40px 20px;
 }
 
 /* HEADER */
 .topbar {
-  text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .topbar h1 {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 600;
 }
 
-/* GLASS EFFECT */
-.glass {
-  backdrop-filter: blur(12px);
-  background: rgba(255,255,255,0.05);
-  border-radius: 16px;
-  padding: 15px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-  transition: 0.3s;
+.tagline {
+  color: var(--subtext);
+  margin-top: 5px;
+  font-size: 0.9rem;
 }
 
-.glass:hover {
-  transform: scale(1.01);
+/* DISCORD */
+.discord-btn {
+  display: block;
+  text-align: center;
+  margin: 20px 0 30px;
+  padding: 10px;
+  background: #5865F2;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.discord-btn:hover {
+  opacity: 0.9;
+}
+
+/* EDITOR */
+.editor {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 40px;
 }
 
 /* INPUTS */
-input, textarea {
+input, select, textarea {
   width: 100%;
   border: none;
-  background: transparent;
-  color: #fff;
   outline: none;
+  background: transparent;
+  color: var(--text);
 }
 
 input {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin-bottom: 10px;
 }
 
+select {
+  margin-bottom: 10px;
+  padding: 6px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
 textarea {
-  min-height: 120px;
-  font-size: 0.95rem;
+  font-family: 'JetBrains Mono', monospace;
+  min-height: 140px;
+  font-size: 0.9rem;
   line-height: 1.6;
 }
 
 /* BOTONES */
 .acciones {
-  margin-top: 10px;
+  margin-top: 12px;
   display: flex;
   gap: 10px;
 }
 
 button {
   flex: 1;
-  border: none;
   padding: 10px;
-  border-radius: 10px;
-  background: #2a2a2e;
+  border-radius: 8px;
+  border: none;
+  background: var(--accent);
   color: white;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: 0.2s;
 }
 
 button:hover {
-  transform: translateY(-2px);
-  background: #3a3a40;
+  opacity: 0.9;
+}
+
+button:active {
+  transform: scale(0.97);
 }
 
 /* FEED */
-.feed {
-  margin-top: 25px;
+.feed h2 {
+  margin-bottom: 15px;
+  font-weight: 500;
 }
 
 /* POST */
 .post {
-  margin-bottom: 15px;
-  padding: 12px;
-  border-radius: 14px;
-  background: rgba(255,255,255,0.04);
-  backdrop-filter: blur(10px);
-
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.5s ease forwards;
+  border-bottom: 1px solid var(--border);
+  padding: 18px 0;
 }
 
 .post h3 {
-  font-size: 1rem;
+  font-size: 1.1rem;
   margin-bottom: 5px;
 }
 
-.post p {
-  font-size: 0.9rem;
-  opacity: 0.85;
+.post span {
+  font-size: 0.75rem;
+  color: var(--subtext);
+}
+
+.post pre {
+  background: #0b0d10;
+  border: 1px solid var(--border);
+  padding: 10px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-top: 10px;
+}
+
+.post code {
+  color: #9cdcfe;
 }
 
 .post small {
+  display: block;
+  margin-top: 8px;
   font-size: 0.7rem;
-  opacity: 0.5;
+  color: var(--subtext);
 }
 
-/* ANIMACIÓN */
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* TOAST */
+#toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 10px 18px;
+  border-radius: 20px;
+  opacity: 0;
+  transition: 0.3s;
 }
 
-/* SCROLL SUAVE */
-html {
-  scroll-behavior: smooth;
-}
-body {
-  -webkit-font-smoothing: antialiased;
-  overscroll-behavior: none;
-}
-
-.app {
-  animation: appLoad 0.6s ease;
-}
-
-@keyframes appLoad {
-  from {
-    opacity: 0;
-    transform: scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-.post:hover {
-  background: rgba(255,255,255,0.07);
-  cursor: pointer;
-}
-.feed {
-  margin-top: 40px;
-}
-
-.post {
-  margin-bottom: 25px;
+#toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
