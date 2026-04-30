@@ -2,73 +2,26 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DevSpace | Comunidad de Programación</title>
-
-  <!-- Favicon -->
-  <link rel="icon" href="favicon2.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon2.png">
-  <link rel="shortcut icon" href="favicon2.png">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css">
+  <title>DevSpace</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
-<main class="app">
-
-  <!-- HEADER -->
-  <header class="topbar">
+  <div class="container">
     <h1>DevSpace</h1>
-    <p class="tagline">
-      Comparte código, ideas y soluciones con la comunidad de ingeniería de sistemas.
-    </p>
-  </header>
+    <p>Comparte tus enlaces</p>
 
-  <!-- BOTÓN DISCORD -->
-  <a href="https://discord.gg/ueJv7xgefk" target="_blank" class="discord-btn">
-    🚀 Unirse al Discord
-  </a>
-
-  <!-- EDITOR -->
-  <section class="editor glass">
-
-    <input type="text" id="titulo" placeholder="Título del tema o problema...">
-
-    <select id="categoria">
-      <option value="">Selecciona categoría</option>
-      <option>JavaScript</option>
-      <option>Python</option>
-      <option>Java</option>
-      <option>C++</option>
-      <option>Web</option>
-      <option>Base de Datos</option>
-      <option>Otro</option>
-    </select>
-
-    <textarea id="contenido" placeholder="Escribe tu código, duda o aporte..."></textarea>
-
-    <div class="acciones">
-      <button onclick="guardarPost()">Publicar</button>
-      <button id="descargar">Descargar</button>
+    <!-- FORMULARIO -->
+    <div class="form">
+      <input type="text" id="name" placeholder="Tu nombre">
+      <input type="text" id="link" placeholder="Tu enlace">
+      <button onclick="addLink()">Agregar</button>
     </div>
 
-  </section>
+    <!-- LISTA -->
+    <div id="links"></div>
+  </div>
 
-  <!-- FEED -->
-  <section class="feed">
-    <h2>💻 Publicaciones recientes</h2>
-    <div id="lista"></div>
-  </section>
-
-</main>
-
-<!-- TOAST -->
-<div id="toast">Publicado 🚀</div>
-
-<!-- SCRIPT -->
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>
