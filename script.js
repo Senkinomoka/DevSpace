@@ -1,87 +1,30 @@
-const titulo = document.getElementById("titulo");
-const contenido = document.getElementById("contenido");
-const categoria = document.getElementById("categoria");
-const lista = document.getElementById("lista");
+let links = JSON.parse(localStorage.getItem("links")) || [];
 
-/* VALIDACIÓN + GUARDADO */
-function guardarPost() {
-  if (!titulo.value.trim() || !contenido.value.trim()) {
-    mostrarToast("Completa los campos");
-    return;
-  }
+function renderLinks() {
+  const container = document.getElementById("links");
+  container.innerHTML = "";
 
-  const posts = JSON.parse(localStorage.getItem("posts")) || [];
-
-  const nuevo = {
-    titulo: titulo.value.trim(),
-    contenido: contenido.value.trim(),
-    categoria: categoria.value || "General",
-    fecha: new Date().toLocaleString()
-  };
-
-  posts.unshift(nuevo);
-  localStorage.setItem("posts", JSON.stringify(posts));
-
-  limpiar();
-  render();
-  mostrarToast("Publicado correctamente");
-
-  scrollFeed();
-}
-
-/* LIMPIAR */
-function limpiar() {
-  titulo.value = "";
-  contenido.value = "";
-  categoria.value = "";
-}
-
-/* RENDER */
-function render() {
-  const posts = JSON.parse(localStorage.getItem("posts")) || [];
-
-  lista.innerHTML = "";
-
-  posts.forEach((p) => {
-    const item = document.createElement("div");
-    item.className = "post";
-
-    item.innerHTML = `
-      <h3>${p.titulo}</h3>
-      <span>${p.categoria}</span>
-      <pre><code>${escapeHTML(p.contenido)}</code></pre>
-      <small>${p.fecha}</small>
+  links.forEach((item) => {
+    const div = document.createElement("div");
+    div.className = "link-card";
+    div.innerHTML = `
+      <strong>${item.name}</strong><br>
+      <a href="${item.link}" target="_blank">${item.link}</a>
     `;
-
-    lista.appendChild(item);
+    container.appendChild(div);
   });
 }
 
-/* SEGURIDAD */
-function escapeHTML(text) {
-  return text
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
+function addLink() {
+  const name = document.getElementById("name").value;
+  const link = document.getElementById("link").value;
+
+  if (!name || !link) return;
+
+  links.push({ name, link });
+  localStorage.setItem("links", JSON.stringify(links));
+
+  renderLinks();
 }
 
-/* SCROLL */
-function scrollFeed() {
-  document.querySelector(".feed").scrollIntoView({
-    behavior: "smooth"
-  });
-}
-
-/* TOAST */
-function mostrarToast(msg) {
-  const toast = document.getElementById("toast");
-  toast.textContent = msg;
-  toast.classList.add("show");
-
-  setTimeout(() => {
-    toast.classList.remove("show");
-  }, 2000);
-}
-
-/* INIT */
-render();
+renderLinks();
